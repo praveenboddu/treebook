@@ -26,4 +26,9 @@ class CustomRoutesTest < ActionDispatch::IntegrationTest
   # 	assert_response :redirect
   # 	assert_redirected_to '/edituser'
   # end  
+
+  test "if profilepage works" do
+    get '/paadhyu'
+    assert_response :success
+  end  
 end

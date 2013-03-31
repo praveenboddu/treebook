@@ -1,6 +1,13 @@
 
-peter: 
-  profile_name: "pbell"
+paadhyu: 
+  profile_name: "paadhyu"
   email: "paadhyu@hotmail.com"
-  first_name: "Peter"
-  last_name: "Bell"
+  first_name: "Praveen"
+  last_name: "Boddu"
+
+
+rajesh: 
+  profile_name: "rchamarthi"
+  email: "rchamarthi@gmail.com"
+  first_name: "Praveen"
+  last_name: "Boddu"

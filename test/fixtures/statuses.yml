@@ -2,8 +2,12 @@
 
 one:
   content: MyText
-  user: peter
+  user: rchamarthi
 
 two:
   content: MyText
-  user: peter
+  user: paadhyu
+
+two:
+  content: praveenstatus
+  user: paadhyu
