@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   
   has_many :statuses
+  has_many :user_friendships
+  has_many :friends, through: :user_friendships
 
   validates :first_name, presence:true
   validates :last_name, presence:true

@@ -11,3 +11,9 @@ rajesh:
   email: "rchamarthi@gmail.com"
   first_name: "Rajesh"
   last_name: "Chamarthi"
+
+peter: 
+  profile_name: "pbell"
+  email: "pbell@gmail.com"
+  first_name: "peter"
+  last_name: "Bell"  
