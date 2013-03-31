@@ -18,7 +18,7 @@ class StatusesControllerTest < ActionController::TestCase
   end
 
   test "should render new page when signed in" do
-    sign_in users(:peter)
+    sign_in users(:paadhyu)
     get :new
     assert_response :success
   end
@@ -30,13 +30,24 @@ class StatusesControllerTest < ActionController::TestCase
   end    
 
   test "should create status when logged in" do
-    sign_in users(:peter)
+    sign_in users(:paadhyu)
     assert_difference('Status.count') do
       post :create, status: { content: @status.content }
     end
 
     assert_redirected_to status_path(assigns(:status))
   end
+
+  test "should create status for the current user when logged in" do
+    sign_in users(:paadhyu)
+    assert_difference('Status.count') do
+      post :create, status: { content: @status.content, user_id: users(:rajesh).id}
+    end
+
+    assert_redirected_to status_path(assigns(:status))
+    assert_equal assigns(:status).user_id, users(:paadhyu).id
+  end
+
 
   test "should show status" do
     get :show, id: @status
@@ -50,7 +61,7 @@ class StatusesControllerTest < ActionController::TestCase
   end 
 
   test "should get edit when signed in" do
-    sign_in users(:peter)
+    sign_in users(:paadhyu)
     get :edit, id: @status
     assert_response :success
   end
@@ -62,10 +73,24 @@ class StatusesControllerTest < ActionController::TestCase
   end 
 
   test "should update status when logged in" do
-    sign_in users(:peter)
+    sign_in users(:paadhyu)
     put :update, id: @status, status: { content: @status.content }
     assert_redirected_to status_path(assigns(:status))
   end
+
+  test "should update status only for the current user when logged in" do
+    sign_in users(:paadhyu)
+    put :update, id: @status, status: { content: @status.content, user_id: users(:rajesh).id }
+    assert_redirected_to status_path(assigns(:status))
+    assert_equal assigns(:status).user_id, users(:paadhyu).id
+  end  
+
+  test "should update status only when the status has changed" do
+    sign_in users(:paadhyu)
+    put :update, id: @status
+    assert_redirected_to status_path(assigns(:status))
+    assert_equal assigns(:status).user_id, users(:paadhyu).id
+  end    
 
   test "should destroy status" do
     assert_difference('Status.count', -1) do
