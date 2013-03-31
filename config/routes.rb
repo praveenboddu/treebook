@@ -5,14 +5,15 @@ Treehouse::Application.routes.draw do
     get 'login', to:"devise/sessions#new", as: :login
     get 'logout', to:"devise/sessions#destroy", as: :logout
     get 'register', to:"devise/registrations#new", as: :register
-    root :to => "devise/sessions#new"
+    #get 'edituser', to:"devise/registrations#edit", as: :edituser
+   # root :to => "devise/sessions#new"
   end  
 
 
   resources :statuses
 
   get 'feed', to: "statuses#index", as: :feed
-  #root :to => "devise/sessions#new"
+  root :to => "statuses#index"
 
 
 
