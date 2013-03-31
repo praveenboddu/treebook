@@ -1,8 +1,19 @@
 Treehouse::Application.routes.draw do
   devise_for :users
 
+  devise_scope :user do
+    get 'login', to:"devise/sessions#new", as: :login
+    get 'logout', to:"devise/sessions#destroy", as: :logout
+    get 'register', to:"devise/registrations#new", as: :register
+    root :to => "devise/sessions#new"
+  end  
+
+
   resources :statuses
-  root :to => "statuses#index"
+
+  get 'feed', to: "statuses#index", as: :feed
+  #root :to => "devise/sessions#new"
+
 
 
   # The priority is based upon order of creation:
