@@ -1,23 +1,32 @@
 Treehouse::Application.routes.draw do
   get "profiles/show"
 
-  devise_for :users
+  
 
-  devise_scope :user do
-    get 'login', to:"devise/sessions#new", as: :login
-    get 'logout', to:"devise/sessions#destroy", as: :logout
-    get 'register', to:"devise/registrations#new", as: :register
+  as :user do
+    get '/login', to:"devise/sessions#new", as: :login
+    get '/logout', to:"devise/sessions#destroy", as: :logout
+    get '/register', to:"devise/registrations#new", as: :register
     #get 'edituser', to:"devise/registrations#edit", as: :edituser
    # root :to => "devise/sessions#new"
   end  
 
+  devise_for :users, skip: [:sessions]
+
+  as :user do
+    get '/login', to:"devise/sessions#new", as: :new_user_session
+    post '/login', to:"devise/sessions#new", as: :user_session
+    get '/logout', to:"devise/sessions#destroy", as: :destroy_user_session
+  end
 
   resources :statuses
 
   get 'feed', to: "statuses#index", as: :feed
   root :to => "statuses#index"
 
-  get '/:id', to: "profiles#show"
+  get '/:id', to: "profiles#show", as: :profile
+
+  resources :user_friendships
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
