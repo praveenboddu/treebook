@@ -4,7 +4,6 @@ paadhyu:
   email: "paadhyu@gmail.com"
   first_name: "Praveen"
   last_name: "Boddu"
-  encrypted_password: "$2a$10$6vg5o6xAOWvzWTZl29VXX.SiruJCvjOFbBw60hOQqTQD..."
 
 
 rajesh: 
@@ -18,3 +17,9 @@ peter:
   email: "pbell@gmail.com"
   first_name: "peter"
   last_name: "Bell"  
+
+bruce: 
+  profile_name: "bwayne"
+  email: "bwayne@gmail.com"
+  first_name: "Bruce"
+  last_name: "Wayne"  

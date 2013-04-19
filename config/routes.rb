@@ -15,9 +15,16 @@ Treehouse::Application.routes.draw do
 
   as :user do
     get '/login', to:"devise/sessions#new", as: :new_user_session
-    post '/login', to:"devise/sessions#new", as: :user_session
+    post '/login', to:"devise/sessions#create", as: :user_session
     get '/logout', to:"devise/sessions#destroy", as: :destroy_user_session
   end
+
+  
+  resources :user_friendships do
+    member do
+      put :accept
+    end  
+  end  
 
   resources :statuses
 
@@ -26,7 +33,6 @@ Treehouse::Application.routes.draw do
 
   get '/:id', to: "profiles#show", as: :profile
 
-  resources :user_friendships
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
